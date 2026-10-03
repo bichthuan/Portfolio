@@ -1,0 +1,5 @@
+.DS_Store
+**/.DS_Store
+
+# Raw source material (PDFs, exports). The site uses cropped copies in assets/.
+Project/

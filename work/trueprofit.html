@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="en" class="js-off">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>TrueProfit: Shipping cost settings — Mei Nguyen</title>
+  <meta name="description" content="How a location-first redesign of TrueProfit’s shipping cost settings cut support tickets by 83% and setup time from 8 to 4.3 minutes.">
+  <meta name="theme-color" content="#0b0b0c">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%230b0b0c'/><circle cx='32' cy='32' r='9' fill='%23ff6b3d'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..700&family=Geist:wght@300..700&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&display=swap">
+  <link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="progress" aria-hidden="true"></div>
+
+  <header class="nav" role="banner">
+    <div class="wrap nav__inner">
+      <a class="brand" href="../index.html" aria-label="Mei Nguyen, home"><span class="brand__dot" aria-hidden="true"></span>Mei Nguyen</a>
+      <nav aria-label="Primary">
+        <ul class="nav__links" id="nav-links">
+          <li><a href="../index.html#work" aria-current="page">Work</a></li>
+          <li><a href="../index.html#capabilities">Capabilities</a></li>
+          <li><a href="../index.html#about">About</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <a class="btn btn--sm nav__cta" href="../index.html#contact">Let’s talk <span class="arrow" aria-hidden="true">→</span></a>
+      <button class="nav__menu-btn" aria-controls="nav-links" aria-expanded="false" aria-label="Open menu"><span></span></button>
+    </div>
+  </header>
+
+  <div class="page">
+  <main id="main" data-article>
+
+    <section class="cs-hero wrap intro" aria-labelledby="cs-title">
+      <a class="back fade-up" style="--d:.1s" href="../index.html#work"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M12 7H2M6 3 2 7l4 4" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>All work</a>
+      <p class="cs-kicker fade-up" style="--d:.15s">Case study 01 · TrueProfit · Shopify SaaS</p>
+      <h1 class="cs-title" id="cs-title">
+        <span class="line" style="display:block;overflow:hidden;padding-bottom:.12em;margin-bottom:-.12em"><span style="--i:0;display:inline-block">Four setup paths became three.</span></span>
+        <span class="line" style="display:block;overflow:hidden;padding-bottom:.12em;margin-bottom:-.12em"><span style="--i:1;display:inline-block" class="muted">Support tickets fell 83%.</span></span>
+      </h1>
+      <p class="cs-sub fade-up" style="--d:.5s">Redesigning shipping cost settings for a <span class="kw is-in">net profit analytics</span> app, so merchants can set it up right the first time and trust the number on their dashboard.</p>
+
+      <dl class="cs-meta fade-up" style="--d:.65s">
+        <div><dt>Role</dt><dd>Senior Product Designer</dd></div>
+        <div><dt>Company</dt><dd>Firegroup</dd></div>
+        <div><dt>Timeline</dt><dd>Apr 2023 to Oct 2024</dd></div>
+        <div><dt>Scope</dt><dd>Research, IA, flows, UI, design system on Shopify Polaris</dd></div>
+      </dl>
+
+      <figure class="cs-cover fade-up" style="--d:.8s">
+        <img src="../assets/img/trueprofit/cover.webp" width="2000" height="1431" alt="TrueProfit, net profit analytics for Shopify. 13,500+ installs and a 4.9 out of 5 rating, shown next to the analytics dashboard.">
+      </figure>
+    </section>
+
+    <section class="wrap" aria-label="At a glance">
+      <div class="glance reveal">
+        <div><h2>Problem</h2><p>Shipping cost setup had four overlapping paths. Merchants got lost, made mistakes, and their profit reports went wrong.</p></div>
+        <div><h2>What I did</h2><p>Mapped every case, then rebuilt the model <span class="kw">location-first</span>. One default zone now covers most stores with zero product work.</p></div>
+        <div><h2>Outcome</h2><p><span class="kw">−83% support tickets</span>, setup time from 8 to 4.3 minutes, and <span class="kw">+5% free-to-paid</span> conversion.</p></div>
+      </div>
+
+      <div class="metrics reveal" data-observe>
+        <div class="metric"><div class="metric__num"><span class="accent">−</span><span data-count="83">0</span>%</div><p class="metric__label">support tickets</p></div>
+        <div class="metric"><div class="metric__num"><span data-count="8">0</span>→<span data-count="4.3">0</span></div><p class="metric__label">minutes to finish setup</p></div>
+        <div class="metric"><div class="metric__num"><span class="accent">+</span><span data-count="5">0</span>%</div><p class="metric__label">free-to-paid conversion</p></div>
+        <div class="metric"><div class="metric__num">$<span data-count="119.8">0</span>K</div><p class="metric__label">MRR, across 4.8K monthly active merchants</p></div>
+      </div>
+    </section>
+
+    <div class="wrap cs-layout" style="margin-top:var(--s-9)">
+      <nav class="toc" aria-label="On this page">
+        <p>On this page</p>
+        <ol>
+          <li><a href="#context">Context</a></li>
+          <li><a href="#problem">The problem</a></li>
+          <li><a href="#mapping">Mapping the mess</a></li>
+          <li><a href="#reframe">The reframe</a></li>
+          <li><a href="#details">Designing the details</a></li>
+          <li><a href="#system">Design system</a></li>
+          <li><a href="#results">Results</a></li>
+          <li><a href="#learned">What I learned</a></li>
+        </ol>
+      </nav>
+
+      <article>
+        <section class="chapter" id="context">
+          <p class="chapter__label"><b>01</b>Context</p>
+          <h2 class="chapter__title">Profit is only as true as the costs behind it.</h2>
+          <div class="prose reveal">
+            <p>TrueProfit is a Shopify app that shows merchants their <strong>real net profit</strong>. Revenue minus ad spend, cost of goods, transaction fees, and shipping. It has over 13,500 installs and a 4.9 out of 5 rating.</p>
+            <p>Every number on the dashboard depends on the costs merchants enter in settings. If shipping cost is wrong, net profit is wrong. If net profit is wrong, the product has no reason to exist. So settings were not a back-office page. They were <span class="kw">the foundation of trust</span>.</p>
+            <p>I owned the redesign of the <strong>cost of goods (COGS) and shipping cost settings</strong>. This case focuses on shipping, the more complex of the two.</p>
+          </div>
+        </section>
+
+        <section class="chapter" id="problem">
+          <p class="chapter__label"><b>02</b>The problem</p>
+          <h2 class="chapter__title">The settings asked merchants to think like a database.</h2>
+          <div class="prose reveal">
+            <p>Real shipping is messy. A store might ship most products worldwide at one price, charge more for heavy items, and use different rates for a few countries. The old settings could handle all of that. The problem was <strong>how</strong> they asked for it.</p>
+            <p>Merchants had to start by creating a <strong>shipping profile</strong>, which is a set of products. Only then could they choose where those products ship and at what price. To set one special rate for one country, a merchant had to build a profile, pick products, add a zone, pick countries, and only then set a cost.</p>
+          </div>
+          <blockquote class="pull reveal">Merchants think “where do I ship, and what does it cost?” The old settings asked “which products?” first.</blockquote>
+          <div class="prose reveal">
+            <p>The cost showed up in three places. Setup took around <strong>8 minutes</strong>. <strong>Support tickets</strong> about shipping kept coming. And free-trial merchants who couldn’t get accurate numbers had little reason to <strong>upgrade to a paid plan</strong>.</p>
+          </div>
+        </section>
+
+        <section class="chapter" id="mapping">
+          <p class="chapter__label"><b>03</b>Mapping the mess</p>
+          <h2 class="chapter__title">Before simplifying anything, I drew every possible path.</h2>
+          <div class="prose reveal">
+            <p>I mapped every configuration a merchant could create in the old model. Four distinct cases came out, each a different combination of profile type and zone type.</p>
+          </div>
+
+          <div class="cards reveal" style="--cols:2">
+            <div class="card"><p class="card__k"><span>Old model</span><b>Case 1</b></p><h3>All products, worldwide, one price</h3><p>Default profile → all products → worldwide → rule and cost.</p></div>
+            <div class="card"><p class="card__k"><span>Old model</span><b>Case 2</b></p><h3>Some products, worldwide, one price</h3><p>Custom profile → select products → worldwide → rule and cost.</p></div>
+            <div class="card"><p class="card__k"><span>Old model</span><b>Case 3</b></p><h3>All products, several zones</h3><p>Default profile → all products → custom zone → select countries → rule and cost.</p></div>
+            <div class="card"><p class="card__k"><span>Old model</span><b>Case 4</b></p><h3>Some products, several zones, several prices</h3><p>Custom profile → select products → custom zone → select countries → rule and cost.</p></div>
+          </div>
+
+          <div class="prose reveal">
+            <p>Seeing them side by side made the issue obvious. <span class="kw">Location appeared in every case, but it came last</span>. Products came first, even though most stores charge the same for every product. The model was built around the exception, not the rule.</p>
+          </div>
+        </section>
+
+        <section class="chapter" id="reframe">
+          <p class="chapter__label"><b>04</b>The reframe</p>
+          <h2 class="chapter__title">Flip the order: location first, products only when needed.</h2>
+          <div class="prose reveal">
+            <p>I rebuilt the model around <strong>shipping zones</strong>. Every store gets a <strong>default zone</strong> that covers “all countries not in other zones”. Inside a zone, products sit in <strong>groups</strong>. By default there is one group with every product in the store.</p>
+            <p>That means the most common setup, one price for everything everywhere, needs <span class="kw">no product selection at all</span>. Merchants add product groups only when prices differ. They add custom zones only when a country needs its own rate.</p>
+          </div>
+
+          <div class="demo reveal" data-demo="before" aria-label="Interactive comparison of shipping setup paths before and after the redesign" style="max-width:860px">
+            <div class="demo__top">
+              <p class="demo__caption" aria-live="polite"></p>
+              <div class="seg" role="group" aria-label="Show setup model">
+                <span class="seg__pill" aria-hidden="true"></span>
+                <button type="button" data-key="before" aria-pressed="true">Before</button>
+                <button type="button" data-key="after" aria-pressed="false">After</button>
+              </div>
+            </div>
+            <div class="flows"></div>
+            <div class="demo__stats"><span><b data-paths>4</b>setup paths</span><span><b data-steps>18</b>steps across all paths</span></div>
+          </div>
+
+          <div class="compare reveal">
+            <div class="compare__col">
+              <h3><span>Before</span><span>Product-first</span></h3>
+              <ul>
+                <li>Start by creating a profile, which is a list of products.</li>
+                <li>Location is chosen inside each profile, so zones repeat across profiles.</li>
+                <li>A single country exception means building a whole new profile.</li>
+                <li>Four paths with up to five steps each.</li>
+              </ul>
+            </div>
+            <div class="compare__col compare__col--after">
+              <h3><span>After</span><span>Location-first</span></h3>
+              <ul>
+                <li>Start from a default zone that already covers the world.</li>
+                <li>Products live in groups inside a zone, with one group by default.</li>
+                <li>A country exception is one custom zone with its own groups.</li>
+                <li>Three paths, and the most common one has three steps.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section class="chapter" id="details">
+          <p class="chapter__label"><b>05</b>Designing the details</p>
+          <h2 class="chapter__title">A simple model still needs guardrails.</h2>
+          <div class="prose reveal">
+            <p>A clean model on a diagram is only half the work. The other half is making every screen <strong>prevent mistakes</strong> instead of reporting them later. These are the key moments of the flow.</p>
+          </div>
+
+          <figure class="figure reveal">
+            <div class="figure__frame"><img src="../assets/img/trueprofit/screen-default.webp" width="1801" height="1233" loading="lazy" alt="Shipping Costs page. A Default zone card shows Rest of world, all products in store as one group, and shipping costs of 12 to 36 dollars. Below is an empty Custom zones section with a Create zone link."></div>
+            <figcaption><b>The landing state.</b> The default zone summarizes where, what and how much in one row. An empty state explains custom zones in one sentence, with one action.</figcaption>
+          </figure>
+
+          <div class="grid-2">
+            <figure class="figure reveal" style="margin-block:0">
+              <div class="figure__frame"><img src="../assets/img/trueprofit/modal-edit.webp" width="1801" height="1113" loading="lazy" alt="Edit default zone modal with Rest of world on the left and a Product group panel on the right showing the Default group, quantity-based, at 0 dollars."></div>
+              <figcaption><b>Edit a zone.</b> Where on the left, what and how much on the right.</figcaption>
+            </figure>
+            <figure class="figure reveal" style="margin-block:0">
+              <div class="figure__frame"><img src="../assets/img/trueprofit/modal-group.webp" width="1801" height="1168" loading="lazy" alt="Edit default zone modal with a new product group named Group 1 containing three selected products."></div>
+              <figcaption><b>Add a product group.</b> Only when some products cost more to ship.</figcaption>
+            </figure>
+          </div>
+
+          <div class="grid-2" style="margin-top:var(--s-6);align-items:start">
+            <figure class="figure reveal" style="margin-block:0">
+              <div class="figure__frame"><img src="../assets/img/trueprofit/product-picker.webp" width="1001" height="1463" loading="lazy" alt="Edit products picker with filters for products selected in this group, selected in other groups, and available products."></div>
+              <figcaption><b>No double-counting.</b> The picker shows which products already sit in another group, so one product never gets two shipping costs.</figcaption>
+            </figure>
+            <div>
+              <figure class="figure reveal" style="margin-top:0">
+                <div class="figure__frame"><img src="../assets/img/trueprofit/validation.webp" width="1801" height="1107" loading="lazy" alt="Product group form with an inline error: click Add products and select at least one product."></div>
+                <figcaption><b>Inline validation.</b> A group can’t be saved empty. The error says exactly what to do next.</figcaption>
+              </figure>
+              <div class="callout reveal">
+                <h3>Rules that keep data clean</h3>
+                <p>A zone must have at least one country and at least one product group. Merchants edit one group at a time, and it is validated before they can open another. Search and filters have their own empty states.</p>
+              </div>
+            </div>
+          </div>
+
+          <figure class="figure reveal">
+            <div class="figure__frame"><img src="../assets/img/trueprofit/custom-zone.webp" width="1801" height="1683" loading="lazy" alt="Create custom shipping zone modal. Zone details and selected countries on the left. Several product groups on the right, one being edited with three products."></div>
+            <figcaption><b>Custom zones reuse the same pattern.</b> Learn the default zone once and you already know how custom zones work.</figcaption>
+          </figure>
+
+          <div class="grid-2">
+            <figure class="figure reveal" style="margin-block:0">
+              <div class="figure__frame"><img src="../assets/img/trueprofit/countries.webp" width="1601" height="907" loading="lazy" alt="Edit countries panel grouped by continent with selection counts, and a version showing the error: select at least one country or region."></div>
+              <figcaption><b>Country picker</b> grouped by continent, with counts and a clear error state.</figcaption>
+            </figure>
+            <figure class="figure reveal" style="margin-block:0">
+              <div class="figure__frame"><img src="../assets/img/trueprofit/final.webp" width="1801" height="1216" loading="lazy" alt="Shipping Costs page with a default zone and three custom zones, each summarizing countries, product groups and cost ranges, with edit and delete actions."></div>
+              <figcaption><b>The finished setup</b> reads as a table of where, what and how much.</figcaption>
+            </figure>
+          </div>
+
+          <figure class="figure reveal">
+            <div class="figure__frame"><img src="../assets/img/trueprofit/settings.webp" width="1801" height="1241" loading="lazy" alt="Shipping cost settings page with two calculation options, use the highest shipping fee of any variant or sum shipping fees of all variants, plus a multiply-per-unit checkbox and a live example order table."></div>
+            <figcaption><b>Edge cases, explained with an example.</b> Orders with several variants can use the highest fee or the sum. A live example order shows the result before merchants save.</figcaption>
+          </figure>
+
+          <div class="prose reveal">
+            <p>Two more details mattered for trust. Changes to shipping cost can be applied to <strong>past orders</strong> with one action, so historical profit stays consistent. And leaving the page with unsaved edits triggers a confirmation, so no one loses work by accident.</p>
+          </div>
+        </section>
+
+        <section class="chapter" id="system">
+          <p class="chapter__label"><b>06</b>Design system</p>
+          <h2 class="chapter__title">Built on Shopify Polaris, so it feels native.</h2>
+          <div class="prose reveal">
+            <p>I built and maintained TrueProfit’s design system on top of <span class="kw">Shopify Polaris</span>. Merchants spend their day in Shopify admin. When an app uses the same patterns for modals, pickers and errors, there is nothing new to learn.</p>
+            <p>It also made engineering faster. The new settings used existing components with documented states, so we spent our time on logic and validation, not on pixels.</p>
+          </div>
+        </section>
+
+        <section class="chapter" id="results">
+          <p class="chapter__label"><b>07</b>Results</p>
+          <h2 class="chapter__title">Fewer tickets, faster setup, more upgrades.</h2>
+          <div class="bars reveal" data-observe aria-label="Setup time before and after, in minutes">
+            <div class="bar"><span class="bar__label">Setup time before</span><span class="bar__track"><span class="bar__fill" style="--v:100"></span></span><span class="bar__val">8.0 min</span></div>
+            <div class="bar bar--hot"><span class="bar__label">Setup time after</span><span class="bar__track"><span class="bar__fill" style="--v:53.75"></span></span><span class="bar__val">4.3 min</span></div>
+          </div>
+          <div class="prose reveal">
+            <ul>
+              <li><strong>Support tickets dropped by 83%.</strong> Fewer merchants needed help to finish setup.</li>
+              <li><strong>Setup time fell from 8 to 4.3 minutes.</strong> That is 46% faster.</li>
+              <li><strong>Free-to-paid conversion rose by 5%.</strong> Merchants who trust their numbers are more willing to pay for them.</li>
+            </ul>
+            <p>For an app at $119.8K monthly recurring revenue, this one redesign helped both sides of the business. It <span class="kw">lowered support cost</span> and <span class="kw">raised revenue</span>.</p>
+          </div>
+        </section>
+
+        <section class="chapter" id="learned">
+          <p class="chapter__label"><b>08</b>What I learned</p>
+          <h2 class="chapter__title">Simple isn’t fewer features. It’s the right order.</h2>
+          <div class="prose reveal">
+            <p>We didn’t remove a single capability. Every case from the old model still works. What changed was the <strong>order of questions</strong> and the <strong>default answer</strong>. When the default fits most people, the complex cases stop getting in everyone else’s way.</p>
+            <p>I now start every settings problem the same way. Map every case, find the question users ask first, and make the most common answer the default.</p>
+          </div>
+        </section>
+      </article>
+    </div>
+
+    <a class="next wrap" href="vieclam24h.html">
+      <p class="next__k">Next case study</p>
+      <p class="next__t">Vieclam24h <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 19 5M8 5h11v11" fill="none" stroke="currentColor" stroke-width="2"/></svg></p>
+      <p class="next__d">Revamping the login flow for a job platform with 50K monthly users.</p>
+    </a>
+
+  </main>
+  </div>
+
+  <footer class="footer" aria-labelledby="footer-title">
+    <h2 id="footer-title" class="sr-only">Footer</h2>
+    <div class="wrap">
+      <div class="footer__top">
+        <div><h2>Navigate</h2><ul><li><a href="../index.html#work">Work</a></li><li><a href="../index.html#capabilities">Capabilities</a></li><li><a href="../index.html#about">About</a></li></ul></div>
+        <div><h2>Case studies</h2><ul><li><a href="trueprofit.html" aria-current="page">TrueProfit</a></li><li><a href="vieclam24h.html">Vieclam24h</a></li><li><a href="payme.html">PayME</a></li><li><a href="bewell.html">Bewell</a></li></ul></div>
+        <div><h2>Connect</h2><ul><li><a href="mailto:bichthuan.des@gmail.com">Email</a></li><li><a href="https://www.linkedin.com/in/thuan-nguyen-prd" target="_blank" rel="noopener">LinkedIn</a></li><li><a href="../assets/docs/Thuan-Nguyen-Senior-Product-Designer-CV.pdf" target="_blank" rel="noopener">CV (PDF)</a></li></ul></div>
+        <div><h2>Local time</h2><p data-clock>Ho Chi Minh City</p></div>
+      </div>
+      <div class="footer__mark-wrap" aria-hidden="true">
+        <div class="footer__mark"><span>M</span><span>e</span><span>i</span><span>&nbsp;</span><span>N</span><span>g</span><span>u</span><span>y</span><span>e</span><span>n</span></div>
+      </div>
+      <div class="footer__bottom">
+        <span>© 2026 Thuan (Mei) Nguyen. Designed and coded with AI.</span>
+        <a href="#main" data-top>Back to top ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast" role="status" aria-live="polite"></div>
+  <script src="../assets/js/main.js" defer></script>
+</body>
+</html>
