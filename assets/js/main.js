@@ -35,6 +35,8 @@
     }
   }
 
+  /* Content-level behaviors. Re-runnable after protected content is unlocked. */
+  const initContentA = () => {
   /* ---------- Hero intro + thread that untangles (complex → simple) ---------- */
   const intro = $('.intro');
   if (intro) requestAnimationFrame(() => requestAnimationFrame(() => intro.classList.add('is-ready')));
@@ -207,6 +209,8 @@
     catch { showToast(btn.dataset.copy); }
   }));
 
+  };
+
   /* ---------- Footer: wordmark reveal + local time ---------- */
   const footer = $('.footer');
   if (footer) {
@@ -249,6 +253,7 @@
     window.addEventListener('resize', upd);
     upd();
   }
+  const initContentB = () => {
   const tocLinks = $$('.toc a');
   if (tocLinks.length) {
     const map = new Map(tocLinks.map(a => [a.getAttribute('href').slice(1), a]));
@@ -262,6 +267,44 @@
     }, { rootMargin: '-35% 0px -60% 0px' });
     map.forEach((_, id) => { const s = document.getElementById(id); if (s) spy.observe(s); });
   }
+
+  /* ---------- Tabs (used by the Research OS app recreation) ---------- */
+  $$('[data-tabs]').forEach(root => {
+    const tabs = $$('[role="tab"]', root);
+    const select = (tab, focus) => {
+      tabs.forEach(t => {
+        const on = t === tab;
+        t.setAttribute('aria-selected', String(on));
+        t.tabIndex = on ? 0 : -1;
+        const panel = document.getElementById(t.getAttribute('aria-controls'));
+        if (panel) panel.hidden = !on;
+      });
+      if (focus) tab.focus();
+    };
+    tabs.forEach((t, i) => {
+      t.addEventListener('click', () => select(t));
+      t.addEventListener('keydown', e => {
+        const k = e.key;
+        let n = null;
+        if (k === 'ArrowRight') n = tabs[(i + 1) % tabs.length];
+        if (k === 'ArrowLeft') n = tabs[(i - 1 + tabs.length) % tabs.length];
+        if (k === 'Home') n = tabs[0];
+        if (k === 'End') n = tabs[tabs.length - 1];
+        if (n) { e.preventDefault(); select(n, true); }
+      });
+    });
+    $$('[data-goto]', root).forEach(b => b.addEventListener('click', () => {
+      const t = tabs.find(x => x.getAttribute('aria-controls') === b.dataset.goto);
+      if (t) select(t, true);
+    }));
+  });
+
+  /* ---------- Expandable table rows ---------- */
+  $$('[data-expand]').forEach(btn => btn.addEventListener('click', () => {
+    const open = btn.getAttribute('aria-expanded') !== 'true';
+    btn.setAttribute('aria-expanded', String(open));
+    $$(`[data-group="${btn.dataset.expand}"]`).forEach(r => { r.hidden = !open; });
+  }));
 
   /* ---------- Lightbox for detailed diagrams ---------- */
   const zoomables = $$('img.zoomable');
@@ -283,4 +326,9 @@
     lb.addEventListener('click', e => { if (e.target === lb || e.target === closeBtn) close(); });
     document.addEventListener('keydown', e => { if (e.key === 'Escape' && lb.classList.contains('is-on')) close(); });
   }
+  };
+
+  const initContent = () => { initContentA(); initContentB(); };
+  window.MeiSite = { initContent };
+  if (!document.querySelector('[data-protected]')) initContent();
 })();

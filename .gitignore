@@ -3,3 +3,6 @@
 
 # Raw source material (PDFs, exports). The site uses cropped copies in assets/.
 Project/
+
+# Plaintext sources for password-protected pages. Never commit.
+private/

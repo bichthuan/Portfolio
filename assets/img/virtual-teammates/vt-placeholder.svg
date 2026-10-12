@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" font-family="Geist, Inter, system-ui, sans-serif">
+  <defs><pattern id="d" width="28" height="28" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.2" fill="#242427"/></pattern></defs>
+  <rect width="1600" height="900" fill="#131315"/><rect width="1600" height="900" fill="url(#d)"/>
+  <rect x="160" y="110" width="1280" height="680" rx="22" fill="#0b0b0c" stroke="#34343a"/>
+  <rect x="160" y="110" width="250" height="680" rx="22" fill="#111113"/><rect x="390" y="110" width="20" height="680" fill="#111113"/>
+  <text x="196" y="170" font-size="20" fill="#8f8d88">Admin Center</text>
+  <rect x="186" y="204" width="200" height="40" rx="10" fill="#1d1d20"/><text x="206" y="230" font-size="18" fill="#f2f0eb">Virtual Teammates</text>
+  <text x="206" y="290" font-size="18" fill="#5d5b57">Users</text><text x="206" y="330" font-size="18" fill="#5d5b57">Usage &amp; Billing</text>
+  <text x="450" y="182" font-size="34" font-weight="600" fill="#f2f0eb">Virtual Teammates</text>
+  <text x="450" y="218" font-size="18" fill="#8f8d88">Grouped by VT type · instances created by principal users</text>
+  <g font-size="19">
+    <rect x="450" y="256" width="950" height="64" rx="12" fill="#18181b" stroke="#9fe0a8" stroke-opacity=".6"/>
+    <text x="478" y="296" fill="#f2f0eb" font-weight="600">Chief of staff</text><text x="1372" y="296" fill="#9fe0a8" text-anchor="end">Enabled · 2 instances</text>
+    <text x="510" y="358" fill="#c9c6bf">Randy</text><text x="900" y="358" fill="#8f8d88">User 1</text>
+    <text x="510" y="398" fill="#c9c6bf">Randy 2</text><text x="900" y="398" fill="#8f8d88">User 2</text>
+    <rect x="450" y="430" width="950" height="64" rx="12" fill="#18181b" stroke="#9fe0a8" stroke-opacity=".6"/>
+    <text x="478" y="470" fill="#f2f0eb" font-weight="600">Content Producer</text><text x="1372" y="470" fill="#9fe0a8" text-anchor="end">Enabled · 2 instances</text>
+    <text x="510" y="532" fill="#c9c6bf">Mandy</text><text x="900" y="532" fill="#8f8d88">User 1</text>
+    <text x="510" y="572" fill="#c9c6bf">Mandy 2</text><text x="900" y="572" fill="#8f8d88">User 2</text>
+    <rect x="450" y="604" width="950" height="64" rx="12" fill="#18181b" stroke="#e8c27a" stroke-opacity=".5"/>
+    <text x="478" y="644" fill="#c9c6bf" font-weight="600">Campaign Strategist</text>
+    <rect x="1192" y="618" width="180" height="36" rx="18" fill="none" stroke="#e8c27a"/><text x="1282" y="642" fill="#e8c27a" text-anchor="middle" font-size="17">Enable in Opal</text>
+  </g>
+  <rect x="450" y="712" width="330" height="40" rx="20" fill="rgba(105,226,217,.12)" stroke="#69E2D9"/>
+  <text x="615" y="738" font-size="17" fill="#69E2D9" text-anchor="middle">Concept placeholder · not a final UI</text>
+</svg>
