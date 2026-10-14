@@ -13,7 +13,8 @@ python3 -m http.server 8000
 ## Structure
 
 ```
-index.html                 Home: hero, impact strip, capabilities, work list, current role, experience, contact
+index.html                 Home: hero with stats, selected work, how I work, experience, contact
+work/index.html            All work: every case study in one list (linked from "More work")
 work/trueprofit.html       Case study 01: shipping cost settings (Shopify SaaS)
 work/vieclam24h.html       Case study 02: login flow revamp (short read)
 work/payme.html            Case study 03: embedded finance e-wallet
