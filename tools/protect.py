@@ -62,7 +62,7 @@ PAGES = {
 
 GATE = '''
     <section class="gate wrap" aria-labelledby="gate-title">
-      <a class="back" href="../index.html#work"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M12 7H2M6 3 2 7l4 4" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>All work</a>
+      <a class="back" href="index.html"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M12 7H2M6 3 2 7l4 4" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>All work</a>
       <p class="cs-kicker">{kicker} <span class="lock-tag" style="transform:none">Protected</span></p>
       <h1 class="gate__title" id="gate-title">This case is under NDA. <span class="muted">Enter the password to read it.</span></h1>
       <p class="gate__lead">{lead}</p>
