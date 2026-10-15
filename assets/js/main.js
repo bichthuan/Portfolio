@@ -326,6 +326,11 @@
     lb.addEventListener('click', e => { if (e.target === lb || e.target === closeBtn) close(); });
     document.addEventListener('keydown', e => { if (e.key === 'Escape' && lb.classList.contains('is-on')) close(); });
   }
+  $$('iframe[data-autoheight]').forEach(f => {
+    const fit = () => { try { const d = f.contentDocument; if (d && d.body) f.style.height = d.documentElement.scrollHeight + 'px'; } catch (e) {} };
+    f.addEventListener('load', () => { fit(); setTimeout(fit, 300); });
+    window.addEventListener('resize', fit);
+  });
   };
 
   const initContent = () => { initContentA(); initContentB(); };

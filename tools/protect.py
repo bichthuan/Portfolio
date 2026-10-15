@@ -33,7 +33,7 @@ PAGES = {
     'virtual-teammates': {
         'title': 'Virtual Teammates: governing AI agents across Opal and Admin Center — Mei Nguyen',
         'desc': 'A password-protected case study about modelling AI agents across Opal, the API and Admin Center. Under NDA.',
-        'kicker': 'Case study 07 · Virtual Teammates · Optimizely',
+        'kicker': 'Case study 08 · Virtual Teammates · Optimizely',
         'lead': 'One AI teammate, three systems: how a new AI agent flows across Opal, the API and Admin Center, and how admins see it.',
         'subject': 'Virtual%20Teammates%20case%20study%20access',
     },
@@ -50,6 +50,13 @@ PAGES = {
         'kicker': 'Case study 06 · Self-service revenue · Optimizely',
         'lead': 'A product-led growth strategy: self-service for SMB and mid-market, intent data for enterprise, Sales refocused.',
         'subject': 'Self-service%20revenue%20case%20study%20access',
+    },
+    'admin-center-blueprint': {
+        'title': 'Admin Center Experience Blueprint: access was 81% of tickets — Mei Nguyen',
+        'desc': 'A password-protected case study: an experience blueprint for Optimizely Admin Center linking each access pain to evidence, a release and a metric. Under NDA.',
+        'kicker': 'Case study 07 · Admin Center Blueprint · Optimizely',
+        'lead': 'Access was 81% of support tickets. An experience blueprint linking each access pain to evidence, a release and a metric across Configure, Manage and Govern.',
+        'subject': 'Admin%20Center%20case%20study%20access',
     },
 }
 
