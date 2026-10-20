@@ -11,6 +11,70 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..700&family=Geist:wght@300..700&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&display=swap">
   <link rel="stylesheet" href="../assets/css/main.css">
+  <style>
+    /* PayME case: lead-focused, short sections */
+    .pm-lede { font-size: var(--fs-md); color: var(--text-soft); line-height: 1.55; max-width: 62ch; }
+    .chapter .pm-lede + * { margin-top: var(--s-6); }
+    .pm-shift { display: grid; grid-template-columns: 1fr auto 1fr; gap: var(--s-5); align-items: center; }
+    .pm-shift__col { border: 1px solid var(--line); border-radius: var(--radius); background: var(--bg-raise); padding: var(--s-5); }
+    .pm-shift__col p { font-size: var(--fs-xs); color: var(--muted); margin-bottom: var(--s-3); }
+    .pm-shift__col ul { list-style: none; display: grid; gap: var(--s-2); }
+    .pm-shift__col li { font-size: var(--fs-sm); color: var(--text-soft); padding: .55rem .8rem; border: 1px solid var(--line); border-radius: 10px; background: var(--bg); }
+    .pm-shift__col--to { border-color: rgba(105,226,217,.45); }
+    .pm-shift__col--to li { border-color: rgba(105,226,217,.25); color: var(--text); }
+    .pm-shift__arrow { color: var(--accent); font-size: 1.5rem; }
+    .pm-stats { list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s-3); }
+    .pm-stats li { border-top: 1px solid var(--line-strong); padding-top: var(--s-4); }
+    .pm-stats b { display: block; font-family: var(--font-display); font-size: var(--fs-2xl, 2.5rem); font-weight: 600; letter-spacing: -.03em; color: var(--text); line-height: 1; }
+    .pm-stats span { display: block; margin-top: var(--s-2); font-size: var(--fs-sm); color: var(--muted); line-height: 1.45; max-width: 26ch; }
+    .pm-quotes { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-3); margin-top: var(--s-5); }
+    .pm-quotes blockquote { margin: 0; border: 1px solid var(--line); border-left: 2px solid var(--accent); border-radius: 12px; padding: var(--s-4) var(--s-5); background: var(--bg-raise); }
+    .pm-quotes p { font-family: var(--font-read, var(--font-display)); font-size: var(--fs-md); line-height: 1.45; color: var(--text); }
+    .pm-more { margin-top: var(--s-5); border: 1px solid var(--line); border-radius: var(--radius); background: var(--bg-raise); }
+    .pm-more > summary { cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; padding: var(--s-4) var(--s-5); font-size: var(--fs-sm); color: var(--text-soft); }
+    .pm-more > summary::-webkit-details-marker { display: none; }
+    .pm-more > summary::after { content: "+"; color: var(--accent); font-size: 1.25rem; line-height: 1; }
+    .pm-more[open] > summary::after { content: "−"; }
+    .pm-more > summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: var(--radius); }
+    .pm-more > .figure, .pm-more > .pm-list { margin: 0; padding: 0 var(--s-5) var(--s-5); }
+    .pm-list { list-style: none; display: grid; gap: var(--s-2); }
+    .pm-list li { font-size: var(--fs-sm); color: var(--text-soft); padding-left: 1rem; position: relative; }
+    .pm-list li::before { content: ""; position: absolute; left: 0; top: .6em; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); }
+    .pm-cards { list-style: none; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--s-3); margin-top: var(--s-5); }
+    .pm-cards--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .pm-cards li { border: 1px solid var(--line); border-radius: 14px; background: var(--bg-raise); padding: var(--s-4) var(--s-5); }
+    .pm-cards h3 { font-size: var(--fs-md); font-weight: 500; margin-bottom: var(--s-2); }
+    .pm-cards h3::before { content: ""; display: block; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); margin-bottom: var(--s-3); }
+    .pm-cards p { font-size: var(--fs-sm); color: var(--muted); line-height: 1.45; }
+    .pm-lanes { display: grid; gap: var(--s-2); }
+    .pm-lane { display: grid; grid-template-columns: 6.5rem 1fr; gap: var(--s-4); align-items: center; border: 1px solid var(--line); border-radius: 14px; background: var(--bg-raise); padding: var(--s-3) var(--s-4); }
+    .pm-lane > b { font-weight: 500; color: var(--text); }
+    .pm-lane ol { list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s-5); }
+    .pm-lane li { position: relative; font-size: var(--fs-sm); color: var(--text-soft); border: 1px solid var(--line-strong); border-radius: 10px; padding: .6rem .8rem; background: var(--bg); }
+    .pm-lane li + li::before { content: "→"; position: absolute; left: calc(-1 * var(--s-5)); width: var(--s-5); text-align: center; top: 50%; transform: translateY(-50%); color: var(--muted); }
+    .pm-lane .is-end { border-color: rgba(105,226,217,.6); color: var(--accent); }
+    .pm-lane--bank li { border-color: rgba(169,155,255,.4); }
+    .pm-fixes { list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s-3); margin-top: var(--s-5); }
+    .pm-fixes li { border: 1px solid var(--line); border-radius: 14px; background: var(--bg-raise); padding: var(--s-4) var(--s-5); }
+    .pm-fixes b { display: block; font-weight: 500; color: var(--text); font-size: var(--fs-sm); }
+    .pm-fixes span { display: block; margin-top: var(--s-2); font-size: var(--fs-sm); color: var(--accent); line-height: 1.45; }
+    .pm-learn { margin-top: var(--s-5); border: 1px solid rgba(105,226,217,.4); border-radius: var(--radius); background: linear-gradient(180deg, rgba(105,226,217,.07), transparent 80%), var(--bg-raise); padding: var(--s-5) var(--s-6); }
+    .pm-learn h3 { font-family: var(--font-display); font-size: var(--fs-lg); font-weight: 600; letter-spacing: -.02em; line-height: 1.25; margin-bottom: var(--s-2); }
+    .pm-learn p { font-size: var(--fs-sm); color: var(--muted); line-height: 1.55; max-width: 60ch; }
+    @media (max-width: 960px) {
+      .pm-cards { grid-template-columns: 1fr 1fr; }
+      .pm-cards--3, .pm-fixes, .pm-quotes { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 700px) {
+      .pm-shift { grid-template-columns: 1fr; }
+      .pm-shift__arrow { transform: rotate(90deg); justify-self: center; }
+      .pm-stats { grid-template-columns: 1fr; }
+      .pm-cards { grid-template-columns: 1fr; }
+      .pm-lane { grid-template-columns: 1fr; gap: var(--s-2); }
+      .pm-lane ol { grid-template-columns: 1fr; gap: var(--s-4); }
+      .pm-lane li + li::before { content: "↓"; left: 50%; top: calc(-1 * var(--s-4)); width: auto; transform: translateX(-50%); line-height: var(--s-4); }
+    }
+  </style>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -22,6 +86,7 @@
       <nav aria-label="Primary">
         <ul class="nav__links" id="nav-links">
           <li><a href="/work/" aria-current="page">Work</a></li>
+          <li><a href="/leadership/">Leadership</a></li>
           <li><a href="/#how">How I work</a></li>
           <li><a href="/#experience">Experience</a></li>
           <li><a href="/#contact">Contact</a></li>
@@ -46,13 +111,13 @@
         <span class="line" style="display:block;overflow:hidden;padding-bottom:.12em;margin-bottom:-.12em"><span style="--i:0;display:inline-block">Finance for people</span></span>
         <span class="line" style="display:block;overflow:hidden;padding-bottom:.12em;margin-bottom:-.12em"><span style="--i:1;display:inline-block" class="muted">who don’t trust apps with money.</span></span>
       </h1>
-      <p class="cs-sub fade-up" style="--d:.5s">Leading a team of 6 to turn a basic e-wallet into an embedded finance app with salary advance, loans, savings and insurance, built with bank partners.</p>
+      <p class="cs-sub fade-up" style="--d:.5s">I led <span class="kw is-in">a team of six</span> while PayME grew from a payment wallet into salary advance, loans, savings and insurance, built with bank partners.</p>
 
       <dl class="cs-meta fade-up" style="--d:.65s">
         <div><dt>Role</dt><dd>Lead Product Designer</dd></div>
         <div><dt>Company</dt><dd>PayME Technology Corp</dd></div>
         <div><dt>Timeline</dt><dd>Apr 2022 to Apr 2023</dd></div>
-        <div><dt>Team and tools</dt><dd>Design team of 6 · Figma, Miro, Useberry</dd></div>
+        <div><dt>Team</dt><dd>6 people: UI/UX designers and a UX writer</dd></div>
       </dl>
 
       <figure class="cs-cover fade-up" style="--d:.8s">
@@ -61,17 +126,11 @@
     </section>
 
     <section class="wrap" aria-label="At a glance">
-      <div class="glance reveal">
-        <div><h2>Problem</h2><p>Users paid at stores with PayME and did little else. Financial services faced a bigger wall: <span class="kw">people didn’t trust an app with their money</span>.</p></div>
-        <div><h2>What I did</h2><p>Led research, set the design roadmap, built a design system, and designed the finance flows, including salary advance with CIMB bank.</p></div>
-        <div><h2>Outcome</h2><p>Shipped a new e-wallet, PayME POS and bank-partnered loan flows, plus the design workflow and brand guidelines with Marketing.</p></div>
-      </div>
-
       <div class="metrics reveal" data-observe>
-        <div class="metric"><div class="metric__num"><span data-count="6">0</span></div><p class="metric__label">designers led and mentored</p></div>
-        <div class="metric"><div class="metric__num"><span data-count="10">0</span>/10</div><p class="metric__label">interviewees feared losing money to an app</p></div>
-        <div class="metric"><div class="metric__num"><span data-count="7">0</span>/10</div><p class="metric__label">ran out of salary by mid-month</p></div>
-        <div class="metric"><div class="metric__num"><span data-count="3">0</span></div><p class="metric__label">usability findings fixed before release</p></div>
+        <div class="metric"><div class="metric__num"><span data-count="6">0</span></div><p class="metric__label">people on the design team I led</p></div>
+        <div class="metric"><div class="metric__num"><span data-count="3">0</span></div><p class="metric__label">products shipped in one year</p></div>
+        <div class="metric"><div class="metric__num"><span data-count="3">0</span></div><p class="metric__label">parties in the salary advance flow</p></div>
+        <div class="metric"><div class="metric__num"><span data-count="3">0</span></div><p class="metric__label">usability problems fixed before release</p></div>
       </div>
     </section>
 
@@ -79,200 +138,122 @@
       <nav class="toc" aria-label="On this page">
         <p>On this page</p>
         <ol>
-          <li><a href="#context">Context</a></li>
-          <li><a href="#role">My role</a></li>
+          <li><a href="#business">Business</a></li>
           <li><a href="#research">Research</a></li>
-          <li><a href="#define">Define</a></li>
-          <li><a href="#ideate">Ideate</a></li>
-          <li><a href="#design">Design</a></li>
-          <li><a href="#test">Test</a></li>
-          <li><a href="#reflect">Reflection</a></li>
+          <li><a href="#leadership">Leadership</a></li>
+          <li><a href="#system">System thinking</a></li>
+          <li><a href="#decisions">Design decisions</a></li>
+          <li><a href="#scale">Build for scale</a></li>
+          <li><a href="#outcomes">Outcomes</a></li>
         </ol>
       </nav>
 
       <article>
-        <section class="chapter" id="context">
-          <p class="chapter__label"><b>01</b>Context</p>
-          <h2 class="chapter__title">From a wallet to a whole financial life.</h2>
-          <div class="prose reveal">
-            <p>COVID-19 pushed Vietnamese consumers toward online payments. PayME launched an e-wallet to ride that shift. Then the company set a bigger goal: become an <strong>all-in-one financial app</strong> for both personal and business needs.</p>
-            <p>The business goal was clear. Integrate every financial service into one app, with an interface simple enough for every customer segment. The open question was whether users wanted that, and what would stop them.</p>
-          </div>
-        </section>
-
-        <section class="chapter" id="role">
-          <p class="chapter__label"><b>02</b>My role</p>
-          <h2 class="chapter__title">Lead, mentor, and the link between business and design.</h2>
-          <div class="prose reveal">
-            <p>I led a multidisciplinary design team of 6, including UI/UX designers and a UX writer. My job covered four areas.</p>
-          </div>
-          <div class="cards reveal" style="--cols:2">
-            <div class="card"><p class="card__k"><span>Direction</span></p><h3>Product roadmap</h3><p>Turned research into priorities, and priorities into a roadmap the team could follow.</p></div>
-            <div class="card"><p class="card__k"><span>Alignment</span></p><h3>Stakeholder requirements</h3><p>Gathered requirements from business, partners and engineering, and translated them into design scope.</p></div>
-            <div class="card"><p class="card__k"><span>Quality</span></p><h3>Output and documentation</h3><p>Set the design workflow, reviewed output quality, and kept documentation current for engineering.</p></div>
-            <div class="card"><p class="card__k"><span>People</span></p><h3>Team management</h3><p>Mentored junior designers and ran the team’s day-to-day delivery.</p></div>
+        <section class="chapter" id="business">
+          <p class="chapter__label"><b>01</b>Business</p>
+          <h2 class="chapter__title">PayME wanted to do more than payments.</h2>
+          <p class="pm-lede reveal">People used PayME to pay at stores, and that was it. The company saw a bigger chance: lending, savings and insurance, in the same app people already used.</p>
+          <div class="pm-shift reveal" aria-label="From a payment wallet to a financial platform">
+            <div class="pm-shift__col"><p>From a payment wallet</p><ul><li>Pay at stores</li><li>Bill payments</li><li>Money transfer</li><li>Top up</li></ul></div>
+            <span class="pm-shift__arrow" aria-hidden="true">→</span>
+            <div class="pm-shift__col pm-shift__col--to"><p>To a financial platform</p><ul><li>Payments</li><li>Salary advance</li><li>Savings</li><li>Consumer loans</li><li>Insurance</li></ul></div>
           </div>
         </section>
 
         <section class="chapter" id="research">
-          <p class="chapter__label"><b>03</b>Research</p>
-          <h2 class="chapter__title">Ten interviews, one loud signal: trust.</h2>
-          <div class="prose reveal">
-            <p>We interviewed <strong>10 active users</strong> aged 18 to 35 who had made a transaction in the last three months. Each session ran 45 to 60 minutes. We asked about their need for financial services like investing and lending, and their pain points with the current app.</p>
-            <p>The answers were blunt. Here is how many of the 10 said each thing.</p>
-          </div>
-
-          <div class="bars reveal" data-observe aria-label="Interview findings, out of 10 participants">
-            <div class="bar bar--hot"><span class="bar__label">Afraid of losing money to an app or fraud, trust banks more</span><span class="bar__track"><span class="bar__fill" style="--v:100"></span></span><span class="bar__val">10/10</span></div>
-            <div class="bar bar--hot"><span class="bar__label">Felt there were no promotions worth using</span><span class="bar__track"><span class="bar__fill" style="--v:100"></span></span><span class="bar__val">10/10</span></div>
-            <div class="bar"><span class="bar__label">Found the first eKYC step hard, with long approval waits</span><span class="bar__track"><span class="bar__fill" style="--v:90"></span></span><span class="bar__val">9/10</span></div>
-            <div class="bar"><span class="bar__label">Want quick loans but fear complex steps and unclear interest</span><span class="bar__track"><span class="bar__fill" style="--v:90"></span></span><span class="bar__val">9/10</span></div>
-            <div class="bar"><span class="bar__label">Found nothing else to explore, and the UI boring</span><span class="bar__track"><span class="bar__fill" style="--v:90"></span></span><span class="bar__val">9/10</span></div>
-            <div class="bar"><span class="bar__label">Use up their salary by mid-month and want an advance</span><span class="bar__track"><span class="bar__fill" style="--v:70"></span></span><span class="bar__val">7/10</span></div>
-            <div class="bar"><span class="bar__label">Prefer installments for high-value purchases</span><span class="bar__track"><span class="bar__fill" style="--v:70"></span></span><span class="bar__val">7/10</span></div>
-            <div class="bar"><span class="bar__label">Had trouble linking banks and wallets</span><span class="bar__track"><span class="bar__fill" style="--v:60"></span></span><span class="bar__val">6/10</span></div>
-          </div>
-
-          <div class="prose reveal">
-            <p>We also collected user stories to hear the need in their own words.</p>
-          </div>
-          <ul class="quote-list reveal">
-            <li>“I’m a taxi driver with a low income. I want to get paid in advance every mid-month to cover my family’s living expenses.”</li>
-            <li>“I want to borrow less than 10 million VND to open a small business, but the bank’s procedures are complicated.”</li>
-            <li>“I want to invest safely with a small amount, 50,000 to 100,000 VND, to learn how investing works.”</li>
+          <p class="chapter__label"><b>02</b>Research</p>
+          <h2 class="chapter__title">People wanted the services. Trust was the problem.</h2>
+          <p class="pm-lede reveal">We talked to 10 active PayME users, aged 18 to 35. They liked the idea of loans and an earlier payday. What held them back was trust, a hard sign-up, and costs they couldn’t see.</p>
+          <ul class="pm-stats reveal">
+            <li><b>10/10</b><span>were afraid of losing money to an app or a scam</span></li>
+            <li><b>9/10</b><span>found eKYC sign-up hard, with long waits</span></li>
+            <li><b>7/10</b><span>ran out of salary by mid-month</span></li>
           </ul>
-
-          <div class="prose reveal">
-            <p>A competitor review completed the picture. The market leaders had scale, partners and incentives, but their apps buried services and confused users. Investment apps won trust with audits and big-name backers. <span class="kw">The opening was clear: simple to use, and visibly trustworthy.</span></p>
+          <div class="pm-quotes reveal">
+            <blockquote><p>“I’m a taxi driver with a low income. I want to get paid in advance every mid-month to cover my family’s living expenses.”</p></blockquote>
+            <blockquote><p>“I want to borrow less than 10 million VND to open a small business, but the bank’s procedures are complicated.”</p></blockquote>
           </div>
+          <details class="pm-more">
+            <summary>See the full research and journey map</summary>
+            <ul class="pm-list">
+              <li>10/10 felt there were no promotions worth using.</li>
+              <li>9/10 wanted quick loans but feared complex steps and unclear interest.</li>
+              <li>9/10 found nothing else to explore in the app.</li>
+              <li>7/10 prefer installments for big purchases.</li>
+              <li>6/10 had trouble linking banks and wallets.</li>
+            </ul>
+            <figure class="figure"><div class="figure__frame"><img class="zoomable" src="../assets/img/payme/journey.webp" width="2401" height="2549" loading="lazy" alt="PayME user journey map across awareness, consideration, decision, use, explore and loyalty, with thoughts, actions, touchpoints, feelings, opportunities and teams involved."></div><figcaption><b>Journey map.</b> Feelings dip at decision and first use, where trust matters most.</figcaption></figure>
+          </details>
         </section>
 
-        <section class="chapter" id="define">
-          <p class="chapter__label"><b>04</b>Define</p>
-          <h2 class="chapter__title">Two people, two money problems.</h2>
-          <div class="grid-2 reveal" style="margin-bottom:var(--s-6)">
-            <div class="card">
-              <p class="card__k"><span>Persona A</span><b>18 to 50</b></p>
-              <h3>People who need money</h3>
-              <p>Income of 5 to 10 million VND a month. Needs are higher than income. Want fast disbursement, a trusted sponsor, clear information and a simple interface. Like vouchers. Fear losing money.</p>
-            </div>
-            <div class="card">
-              <p class="card__k"><span>Persona B</span><b>18 to 35</b></p>
-              <h3>People with money</h3>
-              <p>Income of 10 to 40 million VND a month. Care about customer service and complete information. Prefer safe investments. Fear being cheated.</p>
-            </div>
-          </div>
-          <div class="prose reveal">
-            <p>We mapped one journey for the whole app, from awareness to loyalty, then a detailed journey per feature. Four problems rose to the top.</p>
-            <ol>
-              <li><strong>Brand trust.</strong> Users didn’t know PayME well enough to trust it with money.</li>
-              <li><strong>Onboarding friction.</strong> eKYC and bank linking were hard for new users.</li>
-              <li><strong>Nothing to explore.</strong> The app had no standout features beyond payment.</li>
-              <li><strong>Low financial habit.</strong> Few users invested or saved, and educating the market takes time.</li>
-            </ol>
-          </div>
-          <figure class="figure reveal">
-            <div class="figure__frame"><img class="zoomable" src="../assets/img/payme/journey.webp" width="2401" height="2549" loading="lazy" alt="PayME user journey map across awareness, consideration, decision, use, explore and loyalty, with thoughts, actions, touchpoints, feelings, opportunities and teams involved."></div>
-            <figcaption><b>User journey map.</b> Feelings dip at decision and first use, where trust and errors matter most. Select to enlarge.</figcaption>
-          </figure>
+        <section class="chapter" id="leadership">
+          <p class="chapter__label"><b>03</b>Leadership</p>
+          <h2 class="chapter__title">Giving six people a clear direction.</h2>
+          <p class="pm-lede reveal">I turned the research and business goals into a design roadmap, agreed it with engineering, marketing and the bank, and ran the team against it. I also reviewed the team’s work, mentored junior designers and set up a shared workflow.</p>
           <figure class="figure reveal">
             <div class="figure__frame"><img class="zoomable" src="../assets/img/payme/roadmap.webp" width="2401" height="637" loading="lazy" alt="Product roadmap in Miro showing design system, onboarding, investment, top-up and profile work across releases."></div>
-            <figcaption><b>Design roadmap.</b> I turned the research into a release plan the team could follow. Select to enlarge.</figcaption>
+            <figcaption><b>Design roadmap.</b> Research became priorities, and priorities became releases.</figcaption>
           </figure>
+          <ul class="pm-cards reveal">
+            <li><h3>Priorities</h3><p>Research and business goals in one roadmap.</p></li>
+            <li><h3>Partner alignment</h3><p>Worked with CIMB, engineering and marketing on scope.</p></li>
+            <li><h3>Design reviews</h3><p>Kept quality and patterns consistent across releases.</p></li>
+            <li><h3>Mentoring</h3><p>Coached junior designers and ran day-to-day delivery.</p></li>
+          </ul>
         </section>
 
-        <section class="chapter" id="ideate">
-          <p class="chapter__label"><b>05</b>Ideate</p>
-          <h2 class="chapter__title">Ideas for the product, and a face for the brand.</h2>
-          <div class="prose reveal">
-            <p>Trust isn’t only built in flows. We ran product ideation on whiteboards, and in parallel explored a <strong>mascot</strong> with Marketing to give the brand warmth and make it easier to remember.</p>
+        <section class="chapter" id="system">
+          <p class="chapter__label"><b>04</b>System thinking</p>
+          <h2 class="chapter__title">A simple request. Three parties behind it.</h2>
+          <p class="pm-lede reveal">Salary advance looks like one tap for the user. Behind it, PayME and CIMB each have their own checks and rules. I mapped it as a swimlane so business, bank and engineering could agree on every handoff.</p>
+          <div class="pm-lanes reveal" role="img" aria-label="Salary advance swimlane. User requests an amount and confirms. PayME checks eligibility, sends the request to CIMB and shows the status. CIMB approves and disburses the money.">
+            <div class="pm-lane"><b>User</b><ol><li>Pick an amount</li><li>Confirm</li><li class="is-end">Get the money</li></ol></div>
+            <div class="pm-lane"><b>PayME</b><ol><li>Check eligibility</li><li>Send to CIMB</li><li>Show the status</li></ol></div>
+            <div class="pm-lane pm-lane--bank"><b>CIMB</b><ol><li>Review the request</li><li>Approve</li><li>Disburse</li></ol></div>
           </div>
-          <div class="grid-2">
-            <figure class="figure reveal" style="margin-block:var(--s-5) 0"><div class="figure__frame"><img src="../assets/img/payme/whiteboards.webp" width="2001" height="1746" loading="lazy" alt="Whiteboard sketches and sticky notes from product ideation sessions."></div><figcaption><b>Product ideation</b> on whiteboards.</figcaption></figure>
-            <figure class="figure reveal" style="margin-block:var(--s-5) 0"><div class="figure__frame"><img src="../assets/img/payme/mascots.webp" width="2001" height="903" loading="lazy" alt="Pencil sketches of mascot concepts, including robots, animals and a unicorn."></div><figcaption><b>Mascot exploration</b> with Marketing.</figcaption></figure>
-          </div>
+          <details class="pm-more">
+            <summary>See the full swimlane</summary>
+            <figure class="figure"><div class="figure__frame"><img class="zoomable" src="../assets/img/payme/userflow.webp" width="2401" height="1236" loading="lazy" alt="Swimlane user flow for salary advance across three lanes: user, PayME and CIMB bank."></div><figcaption><b>Salary advance flow</b> across user, PayME and CIMB.</figcaption></figure>
+          </details>
         </section>
 
-        <section class="chapter" id="design">
-          <p class="chapter__label"><b>06</b>Design</p>
-          <h2 class="chapter__title">One structure for many services.</h2>
-          <div class="prose reveal">
-            <p>With many services entering one app, information architecture was the first design decision, not the last. I restructured the app so finance services had a clear home next to the wallet.</p>
-          </div>
+        <section class="chapter" id="decisions">
+          <p class="chapter__label"><b>05</b>Design decisions</p>
+          <h2 class="chapter__title">Show the fee when people choose an amount.</h2>
+          <p class="pm-lede reveal">We tested salary advance with 5 people who had never used PayME. They didn’t know how much to ask for, and they wanted to see the fee before moving on, not on a later screen.</p>
           <figure class="figure reveal">
-            <div class="figure__frame"><img class="zoomable" src="../assets/img/payme/ia.webp" width="2401" height="839" loading="lazy" alt="PayME information architecture tree."></div>
-            <figcaption><b>Information architecture</b> for the new app. Select to enlarge.</figcaption>
+            <div class="figure__frame"><img class="zoomable" src="../assets/img/payme/finding-1-2.webp" width="1801" height="1049" loading="lazy" alt="Before and after of the amount screen. After adds three preset amounts and a fee breakdown on the same screen."></div>
+            <figcaption><b>Before and after.</b> Preset amounts, with the fee on the same screen.</figcaption>
           </figure>
+          <ul class="pm-fixes reveal">
+            <li><b>Didn’t know how much to ask for</b><span>Preset amounts to compare.</span></li>
+            <li><b>Wanted to see the fee first</b><span>Fee shown next to the amount, updated live.</span></li>
+            <li><b>Wanted to see past advances</b><span>A separate history screen, so the main flow stays short.</span></li>
+          </ul>
+        </section>
 
-          <div class="prose reveal">
-            <h3>Salary advance, with three actors</h3>
-            <p>Salary advance answered the clearest need from research: <strong>7 in 10</strong> people ran out of money by mid-month. It was also the most complex flow, because three parties were involved. The user requests, PayME checks, and <strong>CIMB bank</strong> approves and disburses. I mapped it as a swimlane so business, bank and engineering could agree on every handoff.</p>
-          </div>
-          <figure class="figure reveal">
-            <div class="figure__frame"><img class="zoomable" src="../assets/img/payme/userflow.webp" width="2401" height="1236" loading="lazy" alt="Swimlane user flow for salary advance across three lanes: user, PayME and CIMB bank."></div>
-            <figcaption><b>Salary advance flow</b> across user, PayME and CIMB. Select to enlarge.</figcaption>
-          </figure>
-
-          <div class="prose reveal">
-            <h3>A design system to move fast</h3>
-            <p>To save implementation time, we built the <strong>design system</strong> from existing app layouts, then refreshed it with new type and a younger color palette. The system followed the roadmap, so each release added the components it needed.</p>
-          </div>
-          <figure class="figure reveal">
-            <div class="figure__frame"><img src="../assets/img/payme/ui-banner.webp" width="2000" height="1119" loading="lazy" alt="PayME user interface showcase with several app screens on a bright green background."></div>
-          </figure>
+        <section class="chapter" id="scale">
+          <p class="chapter__label"><b>06</b>Build for scale</p>
+          <h2 class="chapter__title">We built the system as we shipped.</h2>
+          <p class="pm-lede reveal">We didn’t stop to build a full design system first. We started from the existing app, refreshed the type and colours, and added components when a release needed them. That let one team design several services without redoing common patterns.</p>
           <figure class="figure reveal">
             <div class="figure__frame"><img src="../assets/img/payme/home-screens.webp" width="2000" height="1160" loading="lazy" alt="Four home screen variants: buy now pay later offer, active balance, linked bank accounts, and an empty state."></div>
-            <figcaption><b>Home states</b> for new, active, bank-linked and empty accounts. Product UI is in Vietnamese, the market language.</figcaption>
+            <figcaption><b>One home, four states:</b> new, active, bank-linked and empty. Product UI is in Vietnamese.</figcaption>
           </figure>
         </section>
 
-        <section class="chapter" id="test">
-          <p class="chapter__label"><b>07</b>Test</p>
-          <h2 class="chapter__title">Five users found three problems we couldn’t see.</h2>
-          <div class="prose reveal">
-            <p>Before each release we built a task list and ran usability tests. For salary advance, we recruited <strong>5 participants</strong> aged 18 to 35 with low incomes, who needed an advance or a loan for living costs and had never used PayME. Each session ran 45 to 60 minutes.</p>
-          </div>
-          <figure class="figure reveal">
-            <div class="figure__frame"><img src="../assets/img/payme/happy-case.webp" width="2201" height="927" loading="lazy" alt="Five screens of the salary advance happy path: home, amount entry, employer details, confirmation and success."></div>
-            <figcaption><b>The happy path</b> participants were asked to complete.</figcaption>
-          </figure>
-
-          <div class="finding reveal">
-            <div><h3>Finding 1</h3><p>Even with a free amount field, users didn’t know how much was enough to ask for.</p></div>
-            <div><h3>Solution</h3><p>Suggest preset advance amounts, so users can compare options instead of guessing.</p></div>
-          </div>
-          <div class="finding reveal">
-            <div><h3>Finding 2</h3><p>Users wanted to see the fee right away. An extra step to view fees made comparing amounts slow.</p></div>
-            <div><h3>Solution</h3><p>Show the fee on the same screen as the amount, and update it live as the amount changes.</p></div>
-          </div>
-          <figure class="figure reveal">
-            <div class="figure__frame"><img src="../assets/img/payme/finding-1-2.webp" width="1801" height="1049" loading="lazy" alt="Before and after of the amount screen. After adds three preset amounts and a fee breakdown on the same screen."></div>
-            <figcaption><b>Before and after.</b> Preset amounts and a live fee breakdown on one screen.</figcaption>
-          </figure>
-
-          <div class="finding reveal">
-            <div><h3>Finding 3</h3><p>After tapping the entry point, users wanted to see their past advances.</p></div>
-            <div><h3>Solution</h3><p>We weighed two options: show the latest advance on the entry screen, or add a separate management screen. We chose the separate screen, so each screen does one job.</p></div>
-          </div>
-          <div class="grid-2" style="align-items:start">
-            <figure class="figure reveal" style="margin-block:var(--s-5) 0"><div class="figure__frame"><img src="../assets/img/payme/finding-3-before.webp" width="1201" height="1256" loading="lazy" alt="Before: home and amount screens with no history."></div><figcaption><b>Before.</b> No way to see past advances.</figcaption></figure>
-            <figure class="figure reveal" style="margin-block:var(--s-5) 0"><div class="figure__frame"><img src="../assets/img/payme/finding-3-after.webp" width="1601" height="1124" loading="lazy" alt="After: home, a salary advance management screen listing past advances, then the amount screen."></div><figcaption><b>After.</b> A dedicated screen for advance history.</figcaption></figure>
-          </div>
-
-          <blockquote class="pull reveal">Showing the fee next to the amount helped users and the business at once. Users could borrow with confidence, and clear pricing is how a new brand earns trust.</blockquote>
-        </section>
-
-        <section class="chapter" id="reflect">
-          <p class="chapter__label"><b>08</b>Reflection</p>
-          <h2 class="chapter__title">The hardest part wasn’t the screens.</h2>
-          <div class="prose reveal">
-            <p>We measured on production, but the release took longer than planned. Engineering had to change parts of the implementation. Agreeing on business processes and rules with partner banks took time too.</p>
-            <p>What I took away as a lead:</p>
-            <ul>
-              <li><strong>Bring partners in early.</strong> In fintech, the bank’s rules shape the flow. A swimlane reviewed with the bank on day one saves weeks later.</li>
-              <li><strong>Design for trust, not just ease.</strong> For money, clarity about fees and status beats a shorter flow.</li>
-              <li><strong>Systems pay off.</strong> A roadmap-aligned design system let a team of 6 ship a new wallet, a POS product and loan flows in one year.</li>
-            </ul>
+        <section class="chapter" id="outcomes">
+          <p class="chapter__label"><b>07</b>Outcomes and learning</p>
+          <h2 class="chapter__title">Shipping took longer than designing.</h2>
+          <p class="pm-lede reveal">We shipped three products in a year. Some releases ran late, because engineering had to change parts of the build and agreeing rules with the bank took time.</p>
+          <ul class="pm-cards pm-cards--3 reveal">
+            <li><h3>New e-wallet</h3><p>A clearer wallet for everyday payments.</p></li>
+            <li><h3>PayME POS</h3><p>PayME at offline stores.</p></li>
+            <li><h3>Bank lending flows</h3><p>Salary advance and loans with CIMB.</p></li>
+          </ul>
+          <div class="pm-learn reveal">
+            <h3>Next time, I’d bring engineering and the bank into flow decisions earlier.</h3>
+            <p>A good design doesn’t help if the people building and approving it aren’t aligned. Earlier reviews would have saved us late changes.</p>
           </div>
         </section>
       </article>
@@ -291,7 +272,7 @@
     <h2 id="footer-title" class="sr-only">Footer</h2>
     <div class="wrap">
       <div class="footer__top">
-        <div><h2>Navigate</h2><ul><li><a href="/work/">Work</a></li><li><a href="/#how">How I work</a></li><li><a href="/#experience">Experience</a></li></ul></div>
+        <div><h2>Navigate</h2><ul><li><a href="/work/">Work</a></li><li><a href="/leadership/">Leadership</a></li><li><a href="/#how">How I work</a></li><li><a href="/#experience">Experience</a></li></ul></div>
         <div><h2>Case studies</h2><ul><li><a href="research-os.html">Research OS</a></li><li><a href="trueprofit.html">TrueProfit</a></li><li><a href="vieclam24h.html">Vieclam24h</a></li><li><a href="usage-billing-visibility.html">Usage &amp; Billing visibility</a></li><li><a href="payme.html" aria-current="page">PayME</a></li><li><a href="self-service-revenue.html">Self-service revenue</a></li><li><a href="admin-center-blueprint.html">Admin Center Blueprint</a></li><li><a href="virtual-teammates.html">Virtual Teammates</a></li><li><a href="bewell.html">Bewell</a></li></ul></div>
         <div><h2>Connect</h2><ul><li><a href="mailto:bichthuan.des@gmail.com">Email</a></li><li><a href="https://www.linkedin.com/in/thuan-nguyen-prd" target="_blank" rel="noopener">LinkedIn</a></li><li><a href="../assets/docs/Thuan-Nguyen-Sr-Product-Designer-CV-2026-10.pdf" target="_blank" rel="noopener">CV (PDF)</a></li></ul></div>
         <div><h2>Local time</h2><p data-clock>Ho Chi Minh City</p></div>

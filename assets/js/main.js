@@ -10,12 +10,17 @@
   const nav = $('.nav');
   if (nav) {
     let lastY = window.scrollY;
+    const footer = $('.footer');
     const onScroll = () => {
       const y = window.scrollY;
+      // The footer is sticky and revealed from under the page, so measure distance to the page end
+      const footerInView = !!footer && y + window.innerHeight > document.documentElement.scrollHeight - footer.offsetHeight * 0.6;
       nav.classList.toggle('is-scrolled', y > 24);
       if (!nav.classList.contains('is-open')) {
-        nav.classList.toggle('is-hidden', y > 400 && y > lastY + 4);
-        if (y < lastY - 4) nav.classList.remove('is-hidden');
+        if (y <= 400) nav.classList.remove('is-hidden');
+        else if (footerInView) nav.classList.add('is-hidden');
+        else if (y > lastY + 4) nav.classList.add('is-hidden');
+        else if (y < lastY - 12) nav.classList.remove('is-hidden');
       }
       lastY = y;
     };
@@ -222,6 +227,8 @@
       mark.style.fontSize = '100px';
       const ratio = markWrap.clientWidth / mark.scrollWidth;
       mark.style.fontSize = (100 * ratio * 0.995) + 'px';
+      // Sticky reveal only works if the whole footer fits on screen; otherwise let it scroll normally
+      footer.classList.toggle('footer--flow', footer.offsetHeight > window.innerHeight);
     };
     fit();
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);

@@ -159,3 +159,6 @@ details.more > .figure, details.more > .mx { margin: 0; padding: 0 var(--s-4) va
   .cv-diagram .cv-draw:not(.cv-dash):not(.cv-dot) { stroke-dasharray: none; }
   .cv-diagram .cv-flow { display: none; }
 }
+
+/* Protected cases: keep the "On this page" sidebar like the public cases */
+.cs-layout--wide.cs-layout--toc { display: grid; }

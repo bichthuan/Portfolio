@@ -22,6 +22,7 @@
       <nav aria-label="Primary">
         <ul class="nav__links" id="nav-links">
           <li><a href="/work/" aria-current="page">Work</a></li>
+          <li><a href="/leadership/">Leadership</a></li>
           <li><a href="/#how">How I work</a></li>
           <li><a href="/#experience">Experience</a></li>
           <li><a href="/#contact">Contact</a></li>
@@ -46,7 +47,7 @@
         <span class="line" style="display:block;overflow:hidden;padding-bottom:.12em;margin-bottom:-.12em"><span style="--i:0;display:inline-block">Four setup paths became three.</span></span>
         <span class="line" style="display:block;overflow:hidden;padding-bottom:.12em;margin-bottom:-.12em"><span style="--i:1;display:inline-block" class="muted">Support tickets fell 83%.</span></span>
       </h1>
-      <p class="cs-sub fade-up" style="--d:.5s">Redesigning shipping cost settings for a net profit analytics app, so merchants can set it up right the first time and trust the number on their dashboard.</p>
+      <p class="cs-sub fade-up" style="--d:.5s">Redesigning shipping cost settings for a net profit analytics app, so merchants get it right the first time and can trust their profit number.</p>
 
       <dl class="cs-meta fade-up" style="--d:.65s">
         <div><dt>Role</dt><dd>Senior Product Designer</dd></div>
@@ -93,17 +94,17 @@
       <article>
         <section class="chapter" id="context">
           <p class="chapter__label"><b>01</b>Context</p>
-          <h2 class="chapter__title">Profit is only as true as the costs behind it.</h2>
+          <h2 class="chapter__title">Wrong costs mean wrong profit.</h2>
           <div class="prose reveal">
             <p>TrueProfit is a Shopify app that shows merchants their <strong>real net profit</strong>. Revenue minus ad spend, cost of goods, transaction fees, and shipping. It has over 13,500 installs and a 4.9 out of 5 rating.</p>
-            <p>Every number on the dashboard depends on the costs merchants enter in settings. If shipping cost is wrong, net profit is wrong. If net profit is wrong, the product has no reason to exist. So settings were not a back-office page. They were the foundation of trust.</p>
+            <p>Every number on the dashboard depends on the costs merchants enter in settings. If shipping cost is wrong, net profit is wrong. And a profit app with the wrong profit is useless. So getting settings right mattered more than any dashboard screen.</p>
             <p>I owned the redesign of the <strong>cost of goods (COGS) and shipping cost settings</strong>. This case focuses on shipping, the more complex of the two.</p>
           </div>
         </section>
 
         <section class="chapter" id="problem">
           <p class="chapter__label"><b>02</b>The problem</p>
-          <h2 class="chapter__title">The settings asked merchants to think like a database.</h2>
+          <h2 class="chapter__title">Settings asked the questions in the wrong order.</h2>
           <div class="prose reveal">
             <p>Real shipping is messy. A store might ship most products worldwide at one price, charge more for heavy items, and use different rates for a few countries. The old settings could handle all of that. The problem was <strong>how</strong> they asked for it.</p>
             <p>Merchants had to start by creating a <strong>shipping profile</strong>, which is a set of products. Only then could they choose where those products ship and at what price. To set one special rate for one country, a merchant had to build a profile, pick products, add a zone, pick countries, and only then set a cost.</p>
@@ -129,7 +130,7 @@
           </div>
 
           <div class="prose reveal">
-            <p>Seeing them side by side made the issue obvious. Location appeared in every case, but it came last. Products came first, even though most stores charge the same for every product. The model was built around the exception, not the rule.</p>
+            <p>Seeing them side by side made the issue obvious. Location appeared in every case, but it came last. Products came first, even though most stores charge the same for every product. The model was built for the rare case.</p>
           </div>
         </section>
 
@@ -180,7 +181,7 @@
           <p class="chapter__label"><b>05</b>Designing the details</p>
           <h2 class="chapter__title">A simple model still needs guardrails.</h2>
           <div class="prose reveal">
-            <p>A clean model on a diagram is only half the work. The other half is making every screen <strong>prevent mistakes</strong> instead of reporting them later. These are the key moments of the flow.</p>
+            <p>With the model fixed, each screen had to <strong>stop mistakes before they happen</strong>. These are the key moments of the flow.</p>
           </div>
 
           <figure class="figure reveal">
@@ -247,7 +248,7 @@
           <h2 class="chapter__title">Built on Shopify Polaris, so it feels native.</h2>
           <div class="prose reveal">
             <p>I built and maintained TrueProfit’s design system on top of Shopify Polaris. Merchants spend their day in Shopify admin. When an app uses the same patterns for modals, pickers and errors, there is nothing new to learn.</p>
-            <p>It also made engineering faster. The new settings used existing components with documented states, so we spent our time on logic and validation, not on pixels.</p>
+            <p>It also made engineering faster. The new settings used existing components with documented states, so we spent our time on logic and validation.</p>
           </div>
         </section>
 
@@ -264,15 +265,15 @@
               <li><strong>Setup time fell from 8 to 4.3 minutes.</strong> That is 46% faster.</li>
               <li><strong>Free-to-paid conversion rose by 5%.</strong> Merchants who trust their numbers are more willing to pay for them.</li>
             </ul>
-            <p>For an app at $119.8K monthly recurring revenue, this one redesign helped both sides of the business. It lowered support cost and raised revenue.</p>
+            <p>For an app at $119.8K monthly recurring revenue, this redesign lowered support cost and raised revenue at the same time.</p>
           </div>
         </section>
 
         <section class="chapter" id="learned">
           <p class="chapter__label"><b>08</b>What I learned</p>
-          <h2 class="chapter__title">Simple isn’t fewer features. It’s the right order.</h2>
+          <h2 class="chapter__title">Ask what users ask first.</h2>
           <div class="prose reveal">
-            <p>We didn’t remove a single capability. Every case from the old model still works. What changed was the <strong>order of questions</strong> and the <strong>default answer</strong>. When the default fits most people, the complex cases stop getting in everyone else’s way.</p>
+            <p>We didn’t remove a single capability. Every case from the old model still works. What changed was the <strong>order of questions</strong> and the <strong>default answer</strong>. If the default fits most stores, most merchants never see the complex options.</p>
             <p>I now start every settings problem the same way. Map every case, find the question users ask first, and make the most common answer the default.</p>
           </div>
         </section>
@@ -282,7 +283,7 @@
     <a class="next wrap" href="vieclam24h.html">
       <p class="next__k">Next case study</p>
       <p class="next__t">Vieclam24h <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 19 5M8 5h11v11" fill="none" stroke="currentColor" stroke-width="2"/></svg></p>
-      <p class="next__d">Revamping the login flow for a job platform with 50K monthly users.</p>
+      <p class="next__d">Jobseekers gave up at login. A simpler flow got them back to applying.</p>
     </a>
 
   </main>
@@ -292,7 +293,7 @@
     <h2 id="footer-title" class="sr-only">Footer</h2>
     <div class="wrap">
       <div class="footer__top">
-        <div><h2>Navigate</h2><ul><li><a href="/work/">Work</a></li><li><a href="/#how">How I work</a></li><li><a href="/#experience">Experience</a></li></ul></div>
+        <div><h2>Navigate</h2><ul><li><a href="/work/">Work</a></li><li><a href="/leadership/">Leadership</a></li><li><a href="/#how">How I work</a></li><li><a href="/#experience">Experience</a></li></ul></div>
         <div><h2>Case studies</h2><ul><li><a href="research-os.html">Research OS</a></li><li><a href="trueprofit.html" aria-current="page">TrueProfit</a></li><li><a href="vieclam24h.html">Vieclam24h</a></li><li><a href="usage-billing-visibility.html">Usage &amp; Billing visibility</a></li><li><a href="payme.html">PayME</a></li><li><a href="self-service-revenue.html">Self-service revenue</a></li><li><a href="admin-center-blueprint.html">Admin Center Blueprint</a></li><li><a href="virtual-teammates.html">Virtual Teammates</a></li><li><a href="bewell.html">Bewell</a></li></ul></div>
         <div><h2>Connect</h2><ul><li><a href="mailto:bichthuan.des@gmail.com">Email</a></li><li><a href="https://www.linkedin.com/in/thuan-nguyen-prd" target="_blank" rel="noopener">LinkedIn</a></li><li><a href="../assets/docs/Thuan-Nguyen-Sr-Product-Designer-CV-2026-10.pdf" target="_blank" rel="noopener">CV (PDF)</a></li></ul></div>
         <div><h2>Local time</h2><p data-clock>Ho Chi Minh City</p></div>
