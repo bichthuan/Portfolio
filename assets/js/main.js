@@ -82,16 +82,38 @@
 
     if (reduce) { draw(1); }
     else {
+      // Loop: tangled → pulled straight → a spark runs along the line → tangles again
+      const spark = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+      spark.setAttribute('class', 'hero__spark'); spark.setAttribute('r', '3.5'); spark.setAttribute('cy', mid);
+      thread.insertBefore(spark, dot);
+      const first = 900, untangle = 2200, run = 1800, hold = 500, tangle = 2000, rest = 700;
+      const cycle = untangle + run + hold + tangle + rest;
+      let start, raf = 0, paused = false, pausedAt = 0;
       draw(0);
-      const dur = 2200, delay = 900;
-      let start;
       const tick = ts => {
-        if (!start) start = ts;
-        const k = Math.min(1, Math.max(0, (ts - start - delay) / dur));
+        if (!start) start = ts + first;
+        let t = ts - start;
+        if (t < 0) { raf = requestAnimationFrame(tick); return; }
+        t %= cycle;
+        let k = 0, s = -1;
+        if (t < untangle) k = t / untangle;
+        else if (t < untangle + run) { k = 1; s = (t - untangle) / run; }
+        else if (t < untangle + run + hold) k = 1;
+        else if (t < untangle + run + hold + tangle) k = 1 - (t - untangle - run - hold) / tangle;
         draw(k);
-        if (k < 1) requestAnimationFrame(tick);
+        if (s >= 0) {
+          const e = s < .5 ? 2 * s * s : 1 - (-2 * s + 2) ** 2 / 2;
+          spark.setAttribute('cx', (e * W).toFixed(1));
+          spark.style.opacity = Math.min(1, Math.sin(s * Math.PI) * 1.6).toFixed(2);
+        } else spark.style.opacity = 0;
+        raf = requestAnimationFrame(tick);
       };
-      requestAnimationFrame(tick);
+      const play = () => { if (!paused) return; paused = false; if (start) start += performance.now() - pausedAt; raf = requestAnimationFrame(tick); };
+      const stop = () => { if (paused) return; paused = true; pausedAt = performance.now(); cancelAnimationFrame(raf); };
+      paused = true; play();
+      // Save battery: pause when the hero is off screen or the tab is hidden
+      if ('IntersectionObserver' in window) new IntersectionObserver(([e]) => (e.isIntersecting && !document.hidden ? play() : stop())).observe(thread);
+      document.addEventListener('visibilitychange', () => (document.hidden ? stop() : play()));
     }
   }
 

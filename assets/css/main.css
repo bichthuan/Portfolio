@@ -554,7 +554,7 @@ body::before {
 .bar { display: grid; grid-template-columns: minmax(0, 1fr) 3.5rem; gap: var(--s-2) var(--s-4); align-items: center; }
 .bar__label { font-size: var(--fs-sm); color: var(--text-soft); grid-column: 1 / -1; }
 .bar__track { height: 8px; border-radius: 99px; background: var(--line); overflow: hidden; }
-.bar__fill { height: 100%; width: calc(var(--v) * 1%); background: var(--text-soft); border-radius: 99px; transform-origin: 0 50%; transform: scaleX(0); transition: transform 1.2s var(--ease-out); }
+.bar__fill { display: block; height: 100%; width: calc(var(--v) * 1%); background: var(--text-soft); border-radius: 99px; transform-origin: 0 50%; transform: scaleX(0); transition: transform 1.2s var(--ease-out); }
 .bar--hot .bar__fill { background: var(--accent); }
 .is-in .bar__fill { transform: scaleX(1); }
 .bar__val { font-size: var(--fs-sm); color: var(--muted); font-variant-numeric: tabular-nums; text-align: right; }
@@ -672,3 +672,8 @@ body::before {
 .more-work__sub { color: var(--muted); font-size: var(--fs-sm); flex: 1; min-width: 14rem; }
 .more-work__all .more-work__go { font-size: var(--fs-lg); }
 .more-work__all:hover .more-work__label { color: var(--accent); }
+.hero__thread .hero__spark { fill: var(--accent); opacity: 0; filter: drop-shadow(0 0 6px rgba(105, 226, 217, .9)); }
+/* Banner-style covers: show the whole banner instead of cropping the logo */
+.preview img[src*="/banner."], .work__thumb img[src*="/banner."] { object-fit: contain; background: var(--bg); }
+/* Banner covers carry their own rounded corners */
+.cs-cover--banner { border: 0; background: none; border-radius: 0; }

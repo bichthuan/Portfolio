@@ -34,6 +34,8 @@
   }
 
   function reveal(html, focus) {
+    // NDA content: tell Microsoft Clarity to mask it in session recordings and heatmaps
+    main.setAttribute('data-clarity-mask', 'True');
     main.innerHTML = html;
     main.removeAttribute('data-protected');
     window.scrollTo(0, 0);
